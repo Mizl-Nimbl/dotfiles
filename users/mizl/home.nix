@@ -33,6 +33,7 @@
     libGL
     glm
     glfw
+    glbinding
     git
     git-crypt
     gnupg
