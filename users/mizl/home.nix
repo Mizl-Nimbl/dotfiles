@@ -30,7 +30,7 @@
     gcc
     gdb
     ninja
-    libGL
+    libGL.dev
     glm
     glfw
     glbinding
