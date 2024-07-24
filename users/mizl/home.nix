@@ -31,6 +31,7 @@
     gdb
     ninja
     libGL.dev
+    libGLU
     glm
     glfw
     glbinding
