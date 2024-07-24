@@ -30,6 +30,9 @@
     gcc
     gdb
     ninja
+    libGL
+    glm
+    glfw
     git
     git-crypt
     gnupg
