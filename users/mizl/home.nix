@@ -14,7 +14,7 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
-
+  home.sessionVariables.GTK_THEME = "gruvbox";
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -38,6 +38,9 @@
     krita
     obsidian
     gnome3.gnome-tweaks
+    gruvbox-gtk-theme
+    gruvbox-plus-icons
+    capitaine-cursors-themed
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -76,9 +79,8 @@
   programs.starship = {
     enable = true;
     settings = {
-      add_newline = true;
       format = 
-        "[](color_orange)\$os\$username\[](bg:color_yellow fg:color_orange)\$directory\[](fg:color_yellow bg:color_aqua)\$git_branch\$git_status\(fg:color_bg3 bg:color_bg1)\$time\[ ](fg:color_bg1)\$line_break$character";
+        "[](color_orange)\$os\$username\$hostname[](bg:color_yellow fg:color_orange)\$directory\[](fg:color_yellow bg:color_aqua)\$git_branch\$git_status\[](fg:color_aqua bg:color_bg1)\$time\[ ](fg:color_bg1)\$line_break$character";
       palette = "gruvbox_dark";
       palettes.gruvbox_dark = {
         color_fg0 = "#fbf1c7";
@@ -97,13 +99,18 @@
         style = "bg:color_orange fg:color_fg0";
       };
       os.symbols = {
-        NixOS = "▲";
+        NixOS = "♄";
       };
       username = {
         show_always = true;
         style_user = "bg:color_orange fg:color_fg0";
         style_root = "bg:color_orange fg:color_fg0";
         format = "[ $user ]($style)";
+      };
+      hostname = {
+        style_user = "bg:color_orange fg:color_fg0";
+        style_root = "bg:color_orange fg:color_fg0";
+        format = "[ $hostname ]($style)";
       };
       directory = {
         style = "fg:color_fg0 bg:color_yellow";
@@ -134,8 +141,8 @@
         format = "[[  $time ](fg:color_fg0 bg:color_bg1)]($style)";
       };
       character = {
-        success_symbol = "[☺](bold green)";
-        error_symbol = "[☹](bold red)";
+        success_symbol = "[➤](bold green)";
+        error_symbol = "[➤](bold red)";
       };
     };
   };
