@@ -36,6 +36,7 @@
     glfw
     glbinding
     mesa
+    freeglut
     git
     git-crypt
     gnupg
