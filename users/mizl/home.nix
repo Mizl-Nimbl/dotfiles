@@ -37,6 +37,7 @@
     glbinding
     mesa
     freeglut
+    direnv
     git
     git-crypt
     gnupg
