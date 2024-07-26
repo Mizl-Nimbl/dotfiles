@@ -33,7 +33,7 @@
     libGL.dev
     libGLU
     glm
-    glfw-wayland
+    glfw
     glbinding
     mesa
     freeglut
