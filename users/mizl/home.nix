@@ -123,7 +123,7 @@
     enable = true;
     settings = {
       format = 
-        "[](color_orange)\$os\$username\$hostname[](bg:color_yellow fg:color_orange)\$directory\[](fg:color_yellow bg:color_aqua)\$git_branch\$git_status\[](fg:color_aqua bg:color_bg1)\$time\[ ](fg:color_bg1)\$line_break$character";
+        "[](color_orange)\$os\$username\[@](bg:color_orange fg:color_fg0)\$hostname[](bg:color_yellow fg:color_orange)\$directory\[](fg:color_yellow bg:color_aqua)\$git_branch\$git_status\[](fg:color_aqua bg:color_bg1)\$time\[ ](fg:color_bg1)\$line_break$character";
       palette = "gruvbox_dark";
       palettes.gruvbox_dark = {
         color_fg0 = "#fbf1c7";
@@ -151,9 +151,10 @@
         format = "[ $user ]($style)";
       };
       hostname = {
-        style_user = "bg:color_orange fg:color_fg0";
-        style_root = "bg:color_orange fg:color_fg0";
-        format = "[ @$hostname ]($style)";
+        style = "bg:color_orange fg:color_fg0";
+        format = "[ $hostname ]($style)";
+        disabled = false;
+        ssh_only = false;
       };
       directory = {
         style = "fg:color_fg0 bg:color_yellow";
