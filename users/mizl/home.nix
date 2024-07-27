@@ -86,6 +86,38 @@
     enableCompletion = true;
     bashrcExtra = "eval '$(starship init bash)'";
   };
+  
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      colors.primary = {
+        # hard contrast background = = '#1d2021'
+        background = "#282828";
+        # soft contrast background = = '#32302f'
+        foreground = "#ebdbb2";
+      };
+      colors.normal = {
+        black   = "#282828";
+        red     = "#cc241d";
+        green   = "#98971a";
+        yellow  = "#d79921";
+        blue    = "#458588";
+        magenta = "#b16286";
+        cyan    = "#689d6a";
+        white   = "#a89984";
+      };
+      colors.bright = {
+        black   = "#928374";
+        red     = "#fb4934";
+        green   = "#b8bb26";
+        yellow  = "#fabd2f";
+        blue    = "#83a598";
+        magenta = "#d3869b";
+        cyan    = "#8ec07c";
+        white   = "#ebdbb2";
+      };
+    };
+  };
 
   programs.starship = {
     enable = true;
@@ -121,7 +153,7 @@
       hostname = {
         style_user = "bg:color_orange fg:color_fg0";
         style_root = "bg:color_orange fg:color_fg0";
-        format = "[ $hostname ]($style)";
+        format = "[ @$hostname ]($style)";
       };
       directory = {
         style = "fg:color_fg0 bg:color_yellow";
