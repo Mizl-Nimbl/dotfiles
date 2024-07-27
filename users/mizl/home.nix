@@ -25,7 +25,7 @@
     nerdfonts
     starship
     neofetch
-    vscode
+    vscodium
     cmake
     gcc
     gdb
@@ -74,9 +74,9 @@
     enable = true;
   };
 
-  programs.vscode = {
-    enable = true;
-  };
+  # programs.vscodium = {
+  #   enable = true;
+  # };
 
   programs.bash = {
     enable = true;
