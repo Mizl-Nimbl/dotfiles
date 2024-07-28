@@ -25,7 +25,7 @@
     nerdfonts
     starship
     neofetch
-    vscodium
+    neovim
     cmake
     gcc
     gdb
@@ -52,6 +52,7 @@
     nmap
     vlc
     nix-prefetch-git
+    discord
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -65,6 +66,8 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
+  xdg.configFile.nvim.source = ./nvim;
 
   programs.gpg = {
     enable= true;
