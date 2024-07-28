@@ -26,6 +26,7 @@
     starship
     neofetch
     cmake
+    vscodium
     gcc
     gdb
     ninja
@@ -67,11 +68,17 @@
   ];
 
   programs.neovim = {
-    enable = true;
-    defaultEditor = true;
+    enable = false;
+    defaultEditor = false;
     plugins = with pkgs.vimPlugins; [
-      neo-tree-nvim
       vimwiki
+      {
+        plugin = neo-tree-nvim;
+        type = "lua";
+        config = ''
+          require('neo-tree-nvim').setup {}
+        '';
+      }
       {
         plugin = nvim-treesitter.withAllGrammars;
         type = "lua";
@@ -250,7 +257,7 @@
   #
   home.sessionVariables = {
     TERMINAL = "alacritty";
-    EDITOR = "nvim";
+    EDITOR = "vscodium";
   };
 
   # Let Home Manager install and manage itself.
