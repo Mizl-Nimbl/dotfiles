@@ -102,6 +102,7 @@
   #  wget
     mullvad-vpn
     steam
+    iptables
   ]; 
   
   environment.gnome.excludePackages = with pkgs.gnome; [
