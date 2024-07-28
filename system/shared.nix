@@ -6,6 +6,7 @@
 
 {
   nix.settings.experimental-features = ["nix-command" "flakes"];
+  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
