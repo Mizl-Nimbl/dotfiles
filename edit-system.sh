@@ -1,2 +1,2 @@
 #!/bin/sh
-sudo nano ~/.dotfiles/system/configuration.nix
+sudo nano ~/.dotfiles/system/shared.nix
