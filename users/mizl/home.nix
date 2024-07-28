@@ -25,7 +25,6 @@
     nerdfonts
     starship
     neofetch
-    neovim
     cmake
     gcc
     gdb
@@ -68,6 +67,32 @@
   ];
 
   xdg.configFile.nvim.source = ./nvim;
+
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    plugins = with pkgs.vimPlugins; [
+      neo-tree-nvim
+      vimwiki
+      {
+        plugin = nvim-treesitter.withAllGrammars;
+        type = "lua";
+        config = ''
+          require('nvim-treesitter.configs').setup {
+            highlight = { enable = true }
+          }
+        '';
+      }
+      {
+        plugin = gruvbox-nvim;
+        type = "lua";
+        config = ''
+          require("gruvbox").setup{}
+          vim.cmd[[colorscheme gruvbox]]
+        '';
+      }
+    ];
+  };
 
   programs.gpg = {
     enable= true;
