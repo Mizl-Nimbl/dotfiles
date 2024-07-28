@@ -249,6 +249,7 @@
   #  /etc/profiles/per-user/mizl/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
+    TERMINAL = "alacritty";
     EDITOR = "nvim";
   };
 
