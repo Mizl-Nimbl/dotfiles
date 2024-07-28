@@ -66,8 +66,6 @@
     # '')
   ];
 
-  xdg.configFile.nvim.source = ./nvim;
-
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -251,7 +249,7 @@
   #  /etc/profiles/per-user/mizl/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
   };
 
   # Let Home Manager install and manage itself.

@@ -102,6 +102,10 @@
     steam
   ]; 
   
+  environment.gnome.excludePackages = with pkgs.gnome; [
+    pkgs.gnome-console
+  ];
+
   programs.steam = {
     enable = true;
   };
