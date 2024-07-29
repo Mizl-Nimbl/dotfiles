@@ -22,6 +22,7 @@
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
+    cider
     alacritty
     nerdfonts
     starship
@@ -259,6 +260,7 @@
   home.sessionVariables = {
     TERMINAL = "alacritty";
     EDITOR = "vscodium";
+    MOZ_ENABLE_WAYLAND = 0;
   };
 
   # Let Home Manager install and manage itself.
