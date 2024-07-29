@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports =
+    [ # Include the results of the hardware scan.
+      /home/mizl/.dotfiles/system/desktop-hardware-configuration.nix
+    ];
   # boot.loader.grub.enable = true;
   # boot.loader.grub.efiSupport = true;
   # boot.loader.grub.device = "nodev";
