@@ -50,6 +50,7 @@
     vlc
     nix-prefetch-git
     discord
+    cava
   ];
 
   programs.neovim = {
