@@ -52,6 +52,26 @@
     discord
     cava
   ];
+  
+  programs.cava = {
+    enable = true;
+    settings = {
+      input.channels = "mono";
+      output.alacritty_sync = "1";
+      color = {
+        gradient = "1";
+        gradient_color_1 = "'#cd231d'";
+        gradient_color_2 = "'#d03c19'";
+        gradient_color_3 = "'#d35014'";
+        gradient_color_4 = "'#d56111'";
+        gradient_color_5 = "'#d67010'";
+        gradient_color_6 = "'#d77f13'";
+        gradient_color_7 = "'#d88d19'";
+        gradient_color_8 = "'#d89b22'";
+      };
+      general.bar_width = "3";
+    };
+  };
 
   programs.neovim = {
     enable = false;
@@ -86,7 +106,7 @@
   };
 
   programs.gpg = {
-    enable= true;
+    enable = true;
   };
 
   services.gpg-agent = {
