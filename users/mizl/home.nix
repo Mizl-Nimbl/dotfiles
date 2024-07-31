@@ -264,7 +264,7 @@
   #
   home.sessionVariables = {
     TERMINAL = "alacritty";
-    EDITOR = "vscodium";
+    EDITOR = "vscode";
     MOZ_ENABLE_WAYLAND = 0;
   };
 
