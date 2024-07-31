@@ -23,7 +23,7 @@
     starship
     neofetch
     cmake
-    vscodium
+    vscode
     gcc
     gdb
     ninja
