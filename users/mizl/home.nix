@@ -51,6 +51,7 @@
     nix-prefetch-git
     discord
     cava
+    prismlauncher
   ];
   
   programs.cava = {
