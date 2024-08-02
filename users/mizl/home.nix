@@ -52,6 +52,7 @@
     discord
     cava
     prismlauncher
+    reaper
   ];
   
   programs.cava = {
