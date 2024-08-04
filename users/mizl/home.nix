@@ -53,6 +53,10 @@
     cava
     prismlauncher
     reaper
+    helm
+    vital
+    ntfs3g
+    ntfsprogs
   ];
   
   programs.cava = {

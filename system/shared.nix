@@ -5,6 +5,8 @@
 { config, pkgs, ... }:
 
 {
+  boot.supportedFilesystems = [ "ntfs" ];
+  imports = [ /home/mizl/musnix-master ];
   nix.settings.experimental-features = ["nix-command" "flakes"];
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
   # hardware.opengl.setLdLibraryPath = true;
@@ -19,6 +21,8 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  musnix.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
@@ -70,7 +74,7 @@
     #media-session.enable = true;
   };
 
-  users.extraUsers.mizl.extraGroups = [ "jackaudio" ];
+  users.extraUsers.mizl.extraGroups = [ "jackaudio" "audio" ];
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -107,6 +111,11 @@
 
   programs.steam = {
     enable = true;
+  };
+ 
+  environment.variables = {
+    LV2_PATH    = "/home/mizl/.nix-profile/lib/lv2";
+    LXVST_PATH  = "/home/mizl/.nix-profile/lib/lxvst";
   };
 
   # Some programs need SUID wrappers, can be configured further or are
