@@ -57,6 +57,9 @@
     vital
     ntfs3g
     ntfsprogs
+    gamemode
+    vulkan-tools
+    glxinfo
   ];
   
   programs.cava = {
