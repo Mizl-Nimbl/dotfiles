@@ -19,11 +19,19 @@
     open = true;
     powerManagement.finegrained = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable; 
+    package = config.boot.kernelPackages.nvidiaPackages.production; 
   };
-  services.xserver.videoDrivers = [ "nvidia" ]; 
+  services.xserver = {
+    enable = true;
+    videoDrivers = [ "nvidia" ];
+    displayManager.gdm = {
+      enable = true;
+      autoSuspend = false;
+    };
+  };
+  programs.xwayland.enable = true;
   boot = {
-    kernelModules = [ "kvm-intel" "wl" ];
+    kernelModules = [ "kvm-intel" "wl" "v4l2loopback" ];
     extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
   };
   networking.hostName = "coilsum";

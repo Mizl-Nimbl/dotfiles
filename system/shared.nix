@@ -74,7 +74,7 @@
     #media-session.enable = true;
   };
 
-  users.extraUsers.mizl.extraGroups = [ "jackaudio" "audio" ];
+  users.extraUsers.mizl.extraGroups = [ "jackaudio" "audio" "gamemode" ];
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -92,6 +92,8 @@
   # Install firefox.
   programs.firefox.enable = true;
 
+  programs.gamemode.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -103,6 +105,7 @@
     mullvad-vpn
     steam
     iptables
+    gamemode
   ]; 
   
   environment.gnome.excludePackages = with pkgs.gnome; [

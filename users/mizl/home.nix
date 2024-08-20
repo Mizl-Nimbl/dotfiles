@@ -49,7 +49,6 @@
     nmap
     vlc
     nix-prefetch-git
-    discord
     cava
     prismlauncher
     reaper
@@ -57,14 +56,22 @@
     vital
     ntfs3g
     ntfsprogs
-    gamemode
     vulkan-tools
     glxinfo
+    ngspice
+    qucs-s
+    r2modman
+    blender
+    obs-studio
+    vesktop
+    valgrind
+    git-filter-repo
   ];
   
   programs.cava = {
     enable = true;
     settings = {
+
       input.channels = "mono";
       output.alacritty_sync = "1";
       color = {
