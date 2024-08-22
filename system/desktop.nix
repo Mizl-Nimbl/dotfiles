@@ -4,6 +4,7 @@
   imports =
     [ # Include the results of the hardware scan.
       /home/mizl/.dotfiles/system/desktop-hardware-configuration.nix
+      /home/mizl/musnix-master
     ];
   # boot.loader.grub.enable = true;
   # boot.loader.grub.efiSupport = true;

@@ -6,7 +6,6 @@
 
 {
   boot.supportedFilesystems = [ "ntfs" ];
-  imports = [ /home/mizl/musnix-master ];
   nix.settings.experimental-features = ["nix-command" "flakes"];
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
   # hardware.opengl.setLdLibraryPath = true;
@@ -21,8 +20,6 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-
-  musnix.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
