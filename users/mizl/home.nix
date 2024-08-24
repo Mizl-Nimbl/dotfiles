@@ -66,6 +66,7 @@
     vesktop
     valgrind
     git-filter-repo
+    arduino-ide
   ];
   
   programs.cava = {
