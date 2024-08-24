@@ -71,7 +71,7 @@
     #media-session.enable = true;
   };
 
-  users.extraUsers.mizl.extraGroups = [ "jackaudio" "audio" "gamemode" ];
+  users.extraUsers.mizl.extraGroups = [ "jackaudio" "audio" "gamemode" "dialout" ];
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
