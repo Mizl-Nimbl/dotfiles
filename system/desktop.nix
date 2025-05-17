@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -32,7 +32,7 @@
   };
   programs.xwayland.enable = true;
   boot = {
-    kernelModules = [ "kvm-intel" "wl" "v4l2loopback" ];
+    kernelModules = [ "kvm-intel" "wl" ];
     extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
   };
   networking.hostName = "coilsum";

@@ -2,9 +2,10 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
+  services.flatpak.enable = true;
   boot.supportedFilesystems = [ "ntfs" ];
   nix.settings.experimental-features = ["nix-command" "flakes"];
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
@@ -47,9 +48,9 @@
   services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Enable CUPS to print documents.
@@ -65,7 +66,12 @@
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
     jack.enable = true;
-
+    extraConfig.pipewire.adjust-sample-rate = {
+        "context.properties" = {
+            "default.clock.rate" = 192000;
+            "default.allowed-rates" = [ 192000 ];
+        };
+    };
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
@@ -103,6 +109,9 @@
     steam
     iptables
     gamemode
+    ffmpeg
+    gphoto2
+    mpv
   ]; 
   
   environment.gnome.excludePackages = with pkgs.gnome; [
@@ -146,3 +155,5 @@
   system.stateVersion = "24.05"; # Did you read the comment?
 
 }
+
+
