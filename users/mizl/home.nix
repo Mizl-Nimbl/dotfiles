@@ -90,6 +90,7 @@
     ]))
     wget
     quickemu
+    cider-2
   ];
   
   programs.cava = {
