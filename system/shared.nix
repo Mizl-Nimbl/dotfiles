@@ -131,7 +131,7 @@
     gphoto2
     mpv
     psensor
-    gwe
+    tuxclocker
   ]; 
   
   environment.gnome.excludePackages = with pkgs.gnome; [
