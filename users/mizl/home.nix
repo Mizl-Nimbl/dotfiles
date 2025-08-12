@@ -18,8 +18,13 @@
 
 
   home.packages = with pkgs; [
+    stress
+    pavucontrol
     alacritty
+    jetbrains.idea-community
+    dconf-editor
     nerdfonts
+    corefonts
     starship
     neofetch
     cmake
@@ -90,9 +95,12 @@
     ]))
     wget
     quickemu
-    cider-2
+    appimage-run
+    gamescope
+    vintagestory
+    qcad
   ];
-  
+
   programs.cava = {
     enable = true;
     settings = {

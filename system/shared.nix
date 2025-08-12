@@ -72,6 +72,24 @@
             "default.allowed-rates" = [ 192000 ];
         };
     };
+    extraConfig.pipewire-pulse = {
+      "10-adjust-quirk-rules" = {
+        "pulse.rules" = [
+          {
+            actions = {
+              quirks = [
+                "block-source-volume"
+              ];
+            };
+            matches = [
+              {
+                "client.name" = "Discord";
+              }
+            ];
+          }
+        ];
+      };
+    };
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
@@ -112,11 +130,14 @@
     ffmpeg
     gphoto2
     mpv
+    psensor
+    gwe
   ]; 
   
   environment.gnome.excludePackages = with pkgs.gnome; [
     pkgs.gnome-console
   ];
+  services.gnome.at-spi2-core.enable = true;
 
   programs.steam = {
     enable = true;

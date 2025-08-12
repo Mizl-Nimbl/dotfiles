@@ -1,4 +1,4 @@
 #!/bin/sh
 pushd ~/.dotfiles
-sudo nixos-rebuild switch --flake .#desktop --impure --upgrade
+sudo nixos-rebuild switch --upgrade-all --flake .#desktop --impure --update-input nixpkgs
 popd
