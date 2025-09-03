@@ -23,7 +23,7 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "America/Chicago";
+  time.timeZone = "America/New_York";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -43,9 +43,22 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # environment.plasma6.excludePackages = with pkgs.kdePackages; [
+  #   plasma-browser-integration
+  #   konsole
+  #   ark
+  #   elisa
+  #   gwenview
+  #   okular
+  #   kate
+  #   khelpcenter
+  #   dolphin
+  #   baloo-widgets
+  #   dolphin-plugins
+  #   spectacle
+  #   ffmpegthumbs
+  #   krdp
+  # ];
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -55,6 +68,9 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+  # mouse
+  services.ratbagd.enable = true;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -132,6 +148,9 @@
     mpv
     psensor
     tuxclocker
+    # nautilus File manager missing fix for KDE
+    libratbag
+    piper
   ]; 
   
   environment.gnome.excludePackages = with pkgs.gnome; [
@@ -146,6 +165,7 @@
   environment.variables = {
     LV2_PATH    = "/home/mizl/.nix-profile/lib/lv2";
     LXVST_PATH  = "/home/mizl/.nix-profile/lib/lxvst";
+    # KWIN_DRM_NO_AMS = "1";
   };
 
   # Some programs need SUID wrappers, can be configured further or are

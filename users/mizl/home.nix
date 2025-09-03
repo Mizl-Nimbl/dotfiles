@@ -2,6 +2,9 @@
 
 {
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "googleearth-pro-7.3.6.9796"
+  ];
 
   home.username = "mizl";
   home.homeDirectory = "/home/mizl";
@@ -18,6 +21,8 @@
 
 
   home.packages = with pkgs; [
+    googleearth-pro
+    # spectacle
     stress
     pavucontrol
     alacritty
