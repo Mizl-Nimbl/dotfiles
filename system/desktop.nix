@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -22,18 +22,31 @@
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.production; 
   };
-  services.xserver = {
-    enable = true;
-    videoDrivers = [ "nvidia" ];
-    displayManager.gdm = {
+  # KDE Plasma 6 Chromium Flicker Fix
+  # environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  services = { 
+    xserver = {
       enable = true;
-      autoSuspend = false;
+      videoDrivers = [ "nvidia" ];
+      #Gnome
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
     };
+    # KDE Plasma 6
+    # displayManager.sddm.enable = true;
+    # displayManager.sddm.wayland.enable = true;
+    # desktopManager.plasma6.enable = true;
   };
   programs.xwayland.enable = true;
   boot = {
     kernelModules = [ "kvm-intel" "wl" "v4l2loopback" ];
-    extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
+    extraModulePackages = with config.boot.kernelPackages; [ broadcom_sta v4l2loopback ];
+    extraModprobeConfig = ''
+    options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+    '';
+  };
+  security = {
+    polkit.enable = true;
   };
   networking.hostName = "coilsum";
 }

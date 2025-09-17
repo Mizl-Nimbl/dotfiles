@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   services.flatpak.enable = true;
@@ -28,7 +28,7 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "America/Chicago";
+  time.timeZone = "America/New_York";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -48,18 +48,34 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # environment.plasma6.excludePackages = with pkgs.kdePackages; [
+  #   plasma-browser-integration
+  #   konsole
+  #   ark
+  #   elisa
+  #   gwenview
+  #   okular
+  #   kate
+  #   khelpcenter
+  #   dolphin
+  #   baloo-widgets
+  #   dolphin-plugins
+  #   spectacle
+  #   ffmpegthumbs
+  #   krdp
+  # ];
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+  # mouse
+  services.ratbagd.enable = true;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -71,7 +87,30 @@
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
     jack.enable = true;
-
+    extraConfig.pipewire.adjust-sample-rate = {
+        "context.properties" = {
+            "default.clock.rate" = 192000;
+            "default.allowed-rates" = [ 192000 ];
+        };
+    };
+    extraConfig.pipewire-pulse = {
+      "10-adjust-quirk-rules" = {
+        "pulse.rules" = [
+          {
+            actions = {
+              quirks = [
+                "block-source-volume"
+              ];
+            };
+            matches = [
+              {
+                "client.name" = "Discord";
+              }
+            ];
+          }
+        ];
+      };
+    };
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
@@ -116,11 +155,20 @@
     steam
     iptables
     gamemode
+    ffmpeg
+    gphoto2
+    mpv
+    psensor
+    tuxclocker
+    # nautilus File manager missing fix for KDE
+    libratbag
+    piper
   ]; 
   
   environment.gnome.excludePackages = with pkgs.gnome; [
     pkgs.gnome-console
   ];
+  services.gnome.at-spi2-core.enable = true;
 
   programs.steam = {
     enable = true;
@@ -129,6 +177,7 @@
   environment.variables = {
     LV2_PATH    = "/home/mizl/.nix-profile/lib/lv2";
     LXVST_PATH  = "/home/mizl/.nix-profile/lib/lxvst";
+    # KWIN_DRM_NO_AMS = "1";
   };
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -159,3 +208,5 @@
   system.stateVersion = "24.05"; # Did you read the comment?
 
 }
+
+

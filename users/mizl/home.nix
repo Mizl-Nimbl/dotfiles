@@ -1,7 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "googleearth-pro-7.3.6.9796"
+  ];
 
   home.username = "mizl";
   home.homeDirectory = "/home/mizl";
@@ -14,12 +17,19 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
-  home.sessionVariables.GTK_THEME = "gruvbox";
+  home.sessionVariables.GTK_THEME = "gruvbox-gtk-theme";
+
 
   home.packages = with pkgs; [
-    cider
+    googleearth-pro
+    # spectacle
+    stress
+    pavucontrol
     alacritty
+    jetbrains.idea-community
+    dconf-editor
     nerdfonts
+    corefonts
     starship
     neofetch
     cmake
@@ -31,7 +41,6 @@
     libGLU
     glm
     glfw
-    glbinding
     mesa
     freeglut
     direnv
@@ -39,10 +48,10 @@
     git-crypt
     gnupg
     pinentry-curses
-    kdenlive
+    kdePackages.kdenlive
     krita
     obsidian
-    gnome3.gnome-tweaks
+    gnome-tweaks
     gruvbox-gtk-theme
     gruvbox-plus-icons
     capitaine-cursors-themed
@@ -87,9 +96,35 @@
     aldo
     godot_4
     blender
+    jdk21_headless
+    easyeffects
+    freecad
+    prusa-slicer
+    qbittorrent
+    kicad
+    freecad
+    filezilla
+    godot_4
+    virt-manager
+    audacity
+    projectm
+    lightspark
+    puredata
+    aldo
+    (python3.withPackages (python-pkgs: with python-pkgs; [
+	pip
+	openai-whisper
+	srt
+	torch
+    ]))
+    wget
+    quickemu
+    appimage-run
+    gamescope
+    vintagestory
     qcad
   ];
-  
+
   programs.cava = {
     enable = true;
     settings = {
