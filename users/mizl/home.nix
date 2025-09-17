@@ -23,7 +23,7 @@
     starship
     neofetch
     cmake
-    vscode
+    vscode-fhs
     gcc
     gdb
     ninja
@@ -61,13 +61,33 @@
     ngspice
     qucs-s
     r2modman
-    blender
     obs-studio
     vesktop
     valgrind
     git-filter-repo
-    arduino
+    arduino-cli
     usbutils
+    opentabletdriver
+    wacomtablet
+    antimicrox
+    dconf-editor
+    bottles
+    gnome.gnome-boxes
+    jdk21_headless
+    wayland
+    qbittorrent
+    gnome-network-displays
+    filezilla
+    pavucontrol
+    ngspice
+    kicad
+    freecad
+    arduino
+    qalculate-qt
+    aldo
+    godot_4
+    blender
+    qcad
   ];
   
   programs.cava = {

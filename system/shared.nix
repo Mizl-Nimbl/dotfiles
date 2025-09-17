@@ -5,12 +5,18 @@
 { config, pkgs, ... }:
 
 {
+  services.flatpak.enable = true;
   boot.supportedFilesystems = [ "ntfs" ];
   nix.settings.experimental-features = ["nix-command" "flakes"];
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
   # hardware.opengl.setLdLibraryPath = true;
   # Bootloader.
+  programs.nix-ld.enable = true;
 
+  programs.nix-ld.libraries = with pkgs; [
+    xorg.libX11
+    xwayland
+  ];
    # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -71,7 +77,14 @@
     #media-session.enable = true;
   };
 
-  users.extraUsers.mizl.extraGroups = [ "jackaudio" "audio" "gamemode" "dialout" ];
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.guest.enable = true;
+  users.extraGroups.vboxusers.members = [ "mizl" ];
+
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+
+  users.extraUsers.mizl.extraGroups = [ "jackaudio" "audio" "gamemode" "dialout" "vboxusers" ];
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
